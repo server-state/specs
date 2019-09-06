@@ -1,6 +1,6 @@
 # Server Module
 A server module (or short: *SM*) is a [server module function](server-module-function.md)
-registered to the server-base under a specific  name` with a specific set of
+registered to the server-base under a specific  `name` with a specific set of
 `options`.
 
 All names must be distinctive for the given `ServerState` instance and may not
