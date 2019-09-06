@@ -24,9 +24,9 @@ the key being the name of the [SM](../terminology/server-module.md).
 **Example 1**
 ```json
 {
-  "module1": { ... },
+  "module1": { "a": "a", "b": "b" },
   "module2": "abc",
-  "module3": [ ... ]
+  "module3": [ "a", "b", "c" ]
 }
 ```
 
@@ -52,5 +52,5 @@ Returns evaluated value of the module specified by the `[module-name]` as JSON.
 `/api/v1/module3`
 
 ```json
-[ ... ]
+[ "a", "b", "c" ]
 ```
