@@ -18,7 +18,7 @@ not allowing for spaces, it should be written as *server-state*.
 > **Attention:** 
 >
 > To avoid any unfortunate associations with the initials of the name (which have bad
-> associations with the nationalism time in Germany), it may never be referred to
+> associations with the ns time in Germany), it may never be referred to
 > with only its initials, i.e., as *SS*.
 
 When an abbreviation is required, use *SerSta*, *SerState* or *SerS*.
