@@ -21,6 +21,8 @@ XYData = Array<{x: number, y: number, title?: string, color?: string | number}>
 #### Suggested visualizations
 Line plots, bar plots, scatter plots, tables
 
+---
+
 ### Hierarchical weighted data
 Hierarchical weighted data describes a tree structure, where nodes contain `n` child nodes and where all nodes have the size 
 of the sum of the sum of all child nodes, with leaf nodes having an explicit size.
@@ -43,6 +45,8 @@ n/a
 #### Suggested visualizations
 Lists, tables, treemaps, sunburst charts
 
+---
+
 ### Markdown
 Raw Markdown that gets generated in the SM and rendered in the client
 
@@ -52,6 +56,8 @@ MarkdownData = string
 
 #### Suggested visualizations
 Markdown renderer, Raw text renderer for environments with no Rich Text support
+
+---
 
 ### Text
 Raw text that gets generated in the SM and rendered in the client
