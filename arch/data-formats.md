@@ -29,7 +29,12 @@ of the sum of the sum of all child nodes, with leaf nodes having an explicit siz
 
 
 ```ts
-HierarchicalData = { title?: string, color?: string | number, children?: Array<HierarchicalData>, size?: number }
+HierarchicalData = { 
+  title?: string, 
+  color?: string | number, 
+  children?: Array<HierarchicalData>, 
+  size?: number 
+}
 ```
 
 #### Required attributes
