@@ -42,3 +42,23 @@ n/a
 
 #### Suggested visualizations
 Lists, tables, treemaps, sunburst charts
+
+### Markdown
+Raw Markdown that gets generated in the SM and rendered in the client
+
+```ts
+MarkdownData = string
+```
+
+#### Suggested visualizations
+Markdown renderer, Raw text renderer for environments with no Rich Text support
+
+### Text
+Raw text that gets generated in the SM and rendered in the client
+
+```ts
+TextData = string
+```
+
+#### Suggested visualizations
+Plain text output
