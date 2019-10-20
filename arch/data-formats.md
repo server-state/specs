@@ -73,3 +73,46 @@ TextData = string
 
 #### Suggested visualizations
 Plain text output
+
+---
+
+
+## Table/Table-like
+Data that's "display-able" in a table format.
+
+```js
+TableData = { _fields: string[], rows: Array<object{field1: string | number | boolean, field 2: [...]}>}
+```
+
+### Required attributes
+- `_fields` an array of strings containing the fields (columns) each rows has
+- `rows` an array of objects that include `string | number | boolean` values for the keys defined in `_fields`
+
+### Optional attributes
+n/a
+
+### Suggested visualizations
+- Table
+- Data Table
+- Selective charts (mapping numerical fields to `x` and `y` in line data)
+
+---
+
+## Key-Value-Pair
+A series of key-value-pair `string | number | boolean` values, where keys are unique strings
+
+```js
+KeyValuePairData = {object{field1: string | number | boolean, field 2: [...]}
+```
+
+> **Please note** that `true`/`false` shall get mapped to *yes*/*no* in visualizations.
+
+### Required attributes
+n/a
+
+### Optional attributes
+n/a
+
+### Suggested visualizations
+- Table
+- List
