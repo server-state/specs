@@ -31,7 +31,8 @@ The structure of an CBM should allow, if the CBM is located at `my-cbm`, to be i
 The component is the CBM shown to the user and must work for widths from 320px to 1080px. It gets passed the following `props`:
 
 *   `data: JSONSerializable`: The data returned by the API endpoint
-*   `onReady: (registerAction: (name, action) => void, refresh: () => Promise<void>) => void` a function that gets called when the CBM gets loaded. This allows to register actions for the "Three-Dots/More Actions"-Menu, manually refresh (e.g., for modules requiring frequent updates etc.
+*   `onRegisterAction: (name, action) => void` a function that lets the CBM register an action for the "Three-Dots/More Actions" menu
+*   `onRefresh: () => Promise<void>` a function to reload the API response for this CBM from inside the CBM (e.g., for modules requiring frequent updates etc.)
 
 Components shall get registered in `/src/config/component-registry.js` as the object importable from `my-cbm`, i.e., the object containing `component` and `info`. It is therefore feasible to use something like:
 
