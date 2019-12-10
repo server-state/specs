@@ -3,7 +3,7 @@ name: Spell- and Grammar Checks
 on: [push]
 
 jobs:
-  build:
+  check-grammar:
     runs-on: ubuntu-latest
 
     strategy:
@@ -16,13 +16,15 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install, build, and test
+    - name: install write-good
+      run: npm install -g write-good
+    - name: checks
       run: |
-        npm install -g write-good
         write-good README.md
         write-good api/**.md
         write-good arch/**.md
         write-good branding/**.md
         write-good terminology/**.md
+      continue-on-error: true
       env:
         CI: true
