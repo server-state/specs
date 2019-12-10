@@ -1,0 +1,28 @@
+name: Spell- and Grammar Checks
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install, build, and test
+      run: |
+        npm install -g write-good
+        write-good README.md
+        write-good api/**.md
+        write-good arch/**.md
+        write-good branding/**.md
+        write-good terminology/**.md
+      env:
+        CI: true
