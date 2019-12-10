@@ -21,13 +21,13 @@ jobs:
     - name: all checks
       run: |
         write-good README.md || true
-        write-good */**/*.md || true
+        write-good (api|arch|branding|terminology)/**.md || true
       continue-on-error: true
       env:
         CI: true
     - name: checks until one fails
       run: |
         write-good README.md
-        write-good */**/*.md
+        write-good (api|arch|branding|terminology)/**.md
       env:
         CI: true
