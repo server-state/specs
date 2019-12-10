@@ -3,7 +3,7 @@
 Common Data Formats, that can get used to allow for using standard frontend modules, shall be listed below. Ideally, all 
 these formats should include at least one implementation of a viewer in every Frontend implementation of *Server State*.
 
-### Line / XY Data
+## Line / XY Data
 Numeric data containing 2D-points that can get plotted in a graph are called XYData. It is specified as follows:
 
 ```ts
@@ -23,7 +23,7 @@ Line plots, bar plots, scatter plots, tables
 
 ---
 
-### Hierarchical weighted data
+## Hierarchical weighted data
 Hierarchical weighted data describes a tree structure, where nodes contain `n` child nodes and where all nodes have the size 
 of the sum of the sum of all child nodes, with leaf nodes having an explicit size.
 
@@ -52,7 +52,7 @@ Lists, tables, treemaps, sunburst charts
 
 ---
 
-### Markdown
+## Markdown
 Raw Markdown that gets generated in the SM and rendered in the client
 
 ```ts
@@ -64,7 +64,7 @@ Markdown renderer, Raw text renderer for environments with no Rich Text support
 
 ---
 
-### Text
+## Text
 Raw text that gets generated in the SM and rendered in the client
 
 ```ts
@@ -80,7 +80,7 @@ Plain text output
 ## Table/Table-like
 Data that's "display-able" in a table format.
 
-```js
+```
 TableData = { _fields: string[], rows: Array<object{field1: string | number | boolean, field 2: [...]}>}
 ```
 
@@ -101,11 +101,12 @@ n/a
 ## Key-Value-Pair
 A series of key-value-pair `string | number | boolean` values, where keys are unique strings
 
-```js
+```
 KeyValuePairData = {object{field1: string | number | boolean, field 2: [...]}
 ```
 
-> **Please note** that `true`/`false` shall get mapped to *yes*/*no* in visualizations.
+> [!Note]
+> Please note that `true`/`false` shall get mapped to *yes*/*no* in visualizations.
 
 ### Required attributes
 n/a
