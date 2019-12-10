@@ -1,6 +1,6 @@
 # Server State branding
-Server State is a FOSS project currently maintained by Pablo Klaschka and Ludwig
-Richter, two students studying space- and aerospace computer science at the
+Server State is a FOSS project currently maintained by *Pablo Klaschka* and *Ludwig
+Richter*, two students studying space- and aerospace computer science at the
 University Würzburg. The main goal is to provide a modular, extensible,
 API-first, easy to use and customize application for monitoring the state of servers (or other network-connected machines). This can practically be any kind of server due to the modular approach, but it is primarily developed for monitoring web-like servers.
 
@@ -15,10 +15,10 @@ using) the `simple-server` template to provide ease of use.
 The official name of the product is *Server State*. In technical environments
 not allowing for spaces, it should be written as *server-state*. 
 
-> **Attention:** 
+> [!DANGER]
 >
 > To avoid any unfortunate associations with the initials of the name (which have bad
-> associations with the ns time in Germany), it may never be referred to
+> associations with the NS time in Germany), it may **never** be referred to
 > with only its initials, i.e., as *SS*.
 
 When an abbreviation is required, use *SerSta*, *SerState* or *SerS*.
