@@ -1,6 +1,6 @@
 # Terminology
 
-To make communication for the project easier and more efficient, some custom terminology will get used. This is described here.
+To make communication for the project easier and more efficient, we use some custom terminology which we describe here.
 
 ### Terms
 - [CBM / Client-Base-Module](terminology/cbm.md)
