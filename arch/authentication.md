@@ -37,7 +37,7 @@ User<--"server-base":Response
 ```
 
 ## Implementation inside `server-base`
-- Inside the config, we pass an optional parameter called `isAuthorized`. It has the type signature `(req: ExpressRequest, authorizedGroups: string[]) => boolean` and is a function that, based on the request (which could include a token or other authentication data) and a list of authorized groups (e.g., `['admins', 'developers']` for one endpoint and `['admins', 'developers', 'project-management']` for another) determines whether the current user is authorized to make that request. It returns `true` if the user is authorized and `false` if he/she is not.
+- Inside the config, we pass an optional parameter called `isAuthorized`. It has the type signature `(req: ExpressRequest, authorizedGroups: string[]) => boolean` and is a function that, based on the request (which could include a token or other authentication data) and a list of authorized groups (e.g., `['admins', 'developers']` for one endpoint and `['admins', 'developers', 'project-management']` for another) determines whether the current user has the authorization to make that request. It returns `true` if the user has the authorization and `false` if he/she is not.
 - When the above function returns `false`, no code may get executed and an `HTTP 403` response gets returned
 - When we register no authorized groups for an endpoint, for security reasons, no authorization should get assumed in any case, meaning calling the method gets skipped.
 - If `isAuthorized` is `undefined` or `null`, no authorization check gets performed and the authorization (i.e., `isAuthorized() === true`) gets assumed
