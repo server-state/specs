@@ -43,9 +43,45 @@ User<--"server-base":Response
 - If `isAuthorized` is `undefined` or `null`, no authorization check gets performed and the authorization (i.e., `isAuthorized() === true`) gets assumed
 - **Breaking Change:** `authorizedGroups: string[]` gets added as third argument for `addModule()`, moving `options: *` to fourth position. These groups get stored and passed into `isAuthorized` when the module gets executed.
 
-## Groups and Permssions
-<!-- TODO -->
+## Groups and Permissions
+A user belongs to $0..n$ groups. To which groups a user belongs gets determined by the Authentication service.
+
+```plantuml
+@startuml
+class User {
+    username:string
+    passwordHash: string
+    groups: Group[]
+}
+class Group {
+    name: string
+}
+
+class APIEndpoint {
+    path: string
+    authorizedGroups: Group[]
+    isAuthorized(group: Group)
+}
+
+Group "0..*" *-- User : belongs to <
+Group "0..*" *-- APIEndpoint : has access to >
+@enduml
+```
 ### Group names
-<!-- TODO -->
-### Permssions and Endpoints
+Group names can contain letters, numbers and dashes. Thus, they follow the following Regular Expression:
+
+```regexp
+[a-zA-Z0-9-]+
+```
+
+Group names are case-insensitive and get evaluated after getting transformed to lowercase, meaning `admins` is equal to `AdMiNS` to make configuration easier.
+
+Typical examples of groups include:
+- `admin`
+- `devops`
+- `developer`
+- `user`
+- `guest`
+
+### Permissions and Endpoints
 <!-- TODO -->
