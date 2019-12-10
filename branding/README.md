@@ -1,27 +1,27 @@
 # Server State branding
-Server State is a FOSS project currently maintained by *Pablo Klaschka* and *Ludwig
+Server State is a FOSS project maintained by *Pablo Klaschka* and *Ludwig
 Richter*, two students studying space- and aerospace computer science at the
 University Würzburg. The main goal is to provide a modular, extensible,
-API-first, easy to use and customize application for monitoring the state of servers (or other network-connected machines). This can practically be any kind of server due to the modular approach, but it is primarily developed for monitoring web-like servers.
+API-first, easy to use and customize application for monitoring the state of servers (or other network-connected machines). This can practically be any kind of server due to the modular approach, but we develop it primarily for monitoring web-like servers.
 
-The resulting product is a very high-level library for creating such a server
+The resulting product is a high-level library for creating such a server
 using NodeJS, meaning all the complicated aspects get handled by us while the
-only thing clients have to develop is a small instance that handles
+single thing end-users have to develop is a small instance that handles
 configuration of the server (adding modules and running the server on a
-specified port). This resulting server (application) can be based (or even just
+specified port). This resulting server (application) might get based (or even 
 using) the `simple-server` template to provide ease of use.
 
 ## Naming conventions
 The official name of the product is *Server State*. In technical environments
-not allowing for spaces, it should be written as *server-state*. 
+not allowing for spaces, we should write *server-state*. 
 
 > [!DANGER]
 >
 > To avoid any unfortunate associations with the initials of the name (which have bad
-> associations with the NS time in Germany), it may **never** be referred to
-> with only its initials, i.e., as *SS*.
+> associations with the NS time in Germany), it may **never** get referred to
+> with its initials, i.e., as *SS*.
 
-When an abbreviation is required, use *SerSta*, *SerState* or *SerS*.
+When we need an abbreviation, use *SerSta*, *SerState* or *SerS*.
 
 ## Colors
 Except for the accent color, Server State uses tones of gray as a symbol of it
@@ -35,5 +35,4 @@ Brand colors:
 * `#008575`: Accent
 
 ## Fonts
-As main font, [Libre Franklin](https://github.com/impallari/Libre-Franklin)
-will be used.
+As main font, we use [Libre Franklin](https://github.com/impallari/Libre-Franklin).

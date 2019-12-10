@@ -29,7 +29,7 @@ activate "Authentication service"
 deactivate "Authentication service"
 
 "simple-server"->"simple-server":Check group permissions
-"simple-server"-->"server-base":Is authorized?
+"simple-server"-->"server-base":Authorized?
 deactivate "simple-server"
 "server-base"->"server-base":Call SMF
 User<--"server-base":Response
