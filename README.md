@@ -1,7 +1,7 @@
 # specs
 Specifications for the server-state project's core aspects
 
-**Please note** that this repo only contains specifications for the core modules of the project, i.e., primarily [server-base](https://github.com/server-state/server-base) and [client-base](https://github.com/server-state/client-base). Specifications specific to modules (e.g., grammars for [linux-raid-module](https://github.com/server-state/linux-raid-module) will exist in the specific module's repository only.
+**Please note** that this repo contains specifications for the core modules of the project, i.e., primarily [server-base](https://github.com/server-state/server-base) and [client-base](https://github.com/server-state/client-base). Specifications specific to modules (e.g., grammars for [linux-raid-module](https://github.com/server-state/linux-raid-module) will exist in the specific module's repository.
 
 ### Languages and formats
 Supported document formats for this repo are
@@ -10,10 +10,10 @@ Supported document formats for this repo are
 - LaTeX (with compiled PDF alongside it)
 - Markdown (`.md`)
 
-Other formats, while supported, should only be used when *absolutely* necessary.
+While other formats are acceptable, you should not use them when not necessary.
 
 #### Special supported Markdown Syntax
-As the main deployment of these docs is built with docsify (and some plugins, cf. `index.html`), special Markdown features such as callouts, LaTeX and PlantUML are supported. You can find a list of all of them below.
+As the main deployment of these docs gets built with docsify (and some plugins, cf. `index.html`), we support special Markdown features such as callouts, LaTeX and PlantUML. You can find a list of them below.
 ##### LaTeX
 ```markdown
 $O(n)$
