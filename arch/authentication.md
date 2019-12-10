@@ -9,30 +9,30 @@ actor User
 == Authentication ==
 
 activate User
-User->simpleserver:Request token
-activate simpleserver
-simpleserver->Authenticationservie:Authenticate user
-activate Authenticationservie
-simpleserver<--Authenticationservie:Token for user
-deactivate Authenticationservie
-User<--simpleserver:Token
-deactivate simpleserver
+User->"simple-server":request token
+activate "simple-server"
+"simple-server"->"Authentication service":Authenticate user
+activate "Authentication service"
+"simple-server"<--"Authentication service":Token for user
+deactivate "Authentication service"
+User<--"simple-server":Token
+deactivate "simple-server"
 
 == API Request ==
-User->simpleserver:GET endpoint \nwith token
-simpleserver->serverbase:forward request
-activate serverbase
+User->"simple-server":GET endpoint \nwith token
+"simple-server"->"server-base":forward request
+activate "server-base"
 
-serverbase->simpleserver:isAuthorized()
-simpleserver->Authenticationservie:Check authentication for token
-activate Authenticationservie
-simpleserver<--Authenticationservie:User status
-deactivate Authenticationservie
+"server-base"->"simple-server":isAuthorized()
+"simple-server"->"Authentication service":Check authentication for token
+activate "Authentication service"
+"simple-server"<--"Authentication service":User status
+deactivate "Authentication service"
 
-simpleserver->simpleserver:Check group permissions
-simpleserver-->serverbase:Is authorized?
-deactivate simpleserver
-serverbase->serverbase:Call SMF
-User<--serverbase:Response
+"simple-server"->"simple-server":Check group permissions
+"simple-server"-->"server-base":Is authorized?
+deactivate "simple-server"
+"server-base"->"server-base":Call SMF
+User<--"server-base":Response
 @enduml
 ```
