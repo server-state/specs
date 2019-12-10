@@ -42,3 +42,10 @@ User<--"server-base":Response
 - When we register no authorized groups for an endpoint, for security reasons, no authorization should get assumed in any case, meaning calling the method gets skipped.
 - If `isAuthorized` is `undefined` or `null`, no authorization check gets performed and the authorization (i.e., `isAuthorized() === true`) gets assumed
 - **Breaking Change:** `authorizedGroups: string[]` gets added as third argument for `addModule()`, moving `options: *` to fourth position. These groups get stored and passed into `isAuthorized` when the module gets executed.
+
+## Groups and Permssions
+<!-- TODO -->
+### Group names
+<!-- TODO -->
+### Permssions and Endpoints
+<!-- TODO -->
