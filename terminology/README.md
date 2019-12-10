@@ -2,7 +2,6 @@
 
 To make communication for the project easier and more efficient, some custom terminology will get used. This is described here.
 
-$O(n)$
 ### Terms
 - [CBM / Client-Base-Module](terminology/cbm.md)
 - [SM / Server-Module](terminology/server-module.md)
