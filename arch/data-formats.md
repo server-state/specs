@@ -1,10 +1,11 @@
 # Data Formats (*DFs*) for the project
 
-Common Data Formats, that can get used to allow for using standard frontend modules, shall be listed below. Ideally, all 
-these formats should include at least one implementation of a viewer in every Frontend implementation of *Server State*.
+This is a list of Common Data formats that we can use, allowing us to use standardized CBMs.
+
+Ideally, all formats should include at least one implementation of a viewer in every Frontend implementation of *Server State*.
 
 ## Line / XY Data
-Numeric data containing 2D-points that can get plotted in a graph are called XYData. It is specified as follows:
+We call numeric data containing 2D-points that can get plotted in a graph *XYData*. Below, you can find its specifications.
 
 ```ts
 XYData = Array<{x: number, y: number, title?: string, color?: string | number}>
@@ -45,7 +46,7 @@ n/a
 - `color`: The color of the point. This can either be a string containing the HEX value of a color or a number
   marking the index in an arbitrary color scheme.
 - `children`: The node's child nodes
-- `size`: The leaf node's size. Can only get used for leaf nodes, i.e., where `children.length === 0`.
+- `size`: The leaf node's size. Can get used for leaf nodes, i.e., where `children.length === 0`.
 
 #### Suggested visualizations
 Lists, tables, treemaps, sunburst charts
@@ -106,7 +107,7 @@ KeyValuePairData = {object{field1: string | number | boolean, field 2: [...]}
 ```
 
 > [!Note]
-> Please note that `true`/`false` shall get mapped to *yes*/*no* in visualizations.
+> Please note that `true`/`false` should get mapped to *yes*/*no* in visualizations.
 
 ### Required attributes
 n/a

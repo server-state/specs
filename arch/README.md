@@ -1,2 +1,2 @@
 # Architecture
-Specifications regarding the technical architecture of the project.
+Specifications of the technical architecture of the project.
