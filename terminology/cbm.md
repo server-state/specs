@@ -4,7 +4,7 @@ A client-base module is a visualization that can get used in the [client-base](h
 It gets passed the data returned form the API and visualized the data.
 
 We release CBMs as npm modules with a naming schema of `[module-name]-cbm` for modules specialized for a 
-specific *SM* or `[data-type-name]-[vis-name]-cbm` for general CBMs for specific [standardized data formats](../arch/data-formats.md).
+specific *SM* or `[data-type-name]-[vis-name]-cbm` for general CBMs for specific [standardized data formats](/arch/data-formats.md).
 
 ### Examples of names
 - `linux-raid-module-cbm`: A CBM that can get used for the `linux-raid-module` (which doesn't use a standard data format)

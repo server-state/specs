@@ -9,3 +9,4 @@
     - [CBM](/terminology/cbm.md)
     - [SM](/terminology/server-module.md)
     - [SMF](/terminology/server-module-function.md)
+    - [Simple Server](/terminology/simple-server.md)
