@@ -100,3 +100,61 @@ The `isAuthorized` callback function passed to the *server-base* has to determin
 Coming soon
 <!-- TODO: Document this -->
 
+## Authentication Implementation in the *client-base*
+In the *client-base*, standard protocols implemented for the *simple-server* get provided and may get activated/deactivated via the *client-base* options.
+
+Supported protocols will include:
+
+1. OAuth 2.0
+2. OAuth 1.0
+3. JWT
+4. No authentication
+
+For every server configured in the *client-base*, an Auth-server (or *No Authentication*) has to get selected in the options. This *Auth-Server* includes information about the protocol and URLs of this server. Two or more servers can use the same Auth-Server.
+
+```plantuml
+@startuml
+class Dashboard
+
+Widget "1..*" --* "1..*" Dashboard
+
+class Widget {
+    endpoint
+    cbm
+}
+
+Widget "1..*" *-- "1" Endpoint
+
+class Endpoint {
+    url
+    server
+}
+
+Endpoint "1..*" -- "1" Server
+
+class Server {
+    baseURL
+    authServer
+}
+
+Server "1..*" *-- "1" AuthServer
+
+interface AuthServer {
+    authenticate(username, password): AuthHeader
+}
+
+AuthServer <|-- OAuth2Server
+class OAuth2Server {
+    clientSecret
+    authURL
+}
+
+AuthServer <|-- JWTServer
+class JWTServer {
+    clientSecret
+    authURL
+}
+
+AuthServer <|-- NoAuthServer
+@enduml
+```
