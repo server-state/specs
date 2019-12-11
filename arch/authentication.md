@@ -18,7 +18,7 @@ User<--"simple-server":Token
 deactivate "simple-server"
 
 == API Request ==
-User->"simple-server":GET endpoint \nwith token
+User->"simple-server":GET endpoint \n with token
 "simple-server"->"server-base":forward request
 activate "server-base"
 
@@ -84,4 +84,19 @@ Typical examples of groups include:
 - `guest`
 
 ### Permissions and Endpoints
-<!-- TODO -->
+As specified above, an implicit permission system emerges from us passing the groups that may access the endpoint when creating the endpoint with
+
+```js
+serverBase.addModule('module-name', myFunc, [
+    'admin',
+    'developer'
+], options);
+```
+Here, users who belong to the group *admin* or *developer* gain access to the endpoint *module-name*.
+
+The `isAuthorized` callback function passed to the *server-base* has to determine whether the current user has access an endpoint with the specified groups that get granted access.
+
+## Authentication Implementation in the *simple-server*
+Coming soon
+<!-- TODO: Document this -->
+
