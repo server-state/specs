@@ -97,8 +97,54 @@ Here, users who belong to the group *admin* or *developer* gain access to the en
 The `isAuthorized` callback function passed to the *server-base* has to determine whether the current user has access an endpoint with the specified groups that get granted access.
 
 ## Authentication Implementation in the *simple-server*
-Coming soon
-<!-- TODO: Document this -->
+In the *simple-server*, a function for `isAuthorized` has to get passed to the *server-base* to use Authentication. This function then can make use of one of the auth modules provided in the *server-state* organization or custom code (or a combination thereof).
+
+One example (using the JWT system) could look something like this:
+
+```js
+// [...]
+const jwt = require('@server-state/auth-jwt-server');
+
+jwt.setup({
+    privateKey: privateKey,
+    publicKey: publicKey,
+    issuer: 'This server',
+    db: {
+        type: jwt.db.SQLITE3,
+        location: './users.sqlite',
+});
+
+// [...]
+
+let serverBase = new ServerBase({
+    logToConsole: true,
+    // [...]
+    isAuthorized: (req, authorizedGroups) => {
+        if (authorizedGroups.includes('guest'))
+            return true;
+        
+        const currentUsersGroups = jwt.currentUsersGroups(req)
+        
+        // Intersections between currentUsersGroups and authorizedGroups:
+        return array1.filter(value => array2.includes(value)).length > 0;
+    }
+});
+
+serverBase.addModule('a', aSMF, ['admin'], {});
+serverBase.addModule('b', aSMF, ['admin', 'guest'], {});
+
+// [...]
+
+serverBase.init(app)
+
+// [...]
+
+app.listen(8080);
+```
+
+This can differ for other auth modules, but the general method remains the same. We check whether the current user (parsed from the Express Request object `req`) is in a group that's included in `authorizedGroups`.
+
+In the above example, we have a group called `guest`, which skips the check since modules accessible by this group need no authentication.
 
 ## Authentication Implementation in the *client-base*
 In the *client-base*, standard protocols implemented for the *simple-server* get provided and may get activated/deactivated via the *client-base* options.
