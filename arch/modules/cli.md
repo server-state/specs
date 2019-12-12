@@ -1,5 +1,14 @@
 # CLI (@server-state/cli)
 
+
+|Info|Value|
+|---|---|
+|Repository|https://github.com/server-state/cli|
+|NPM Package|[`@server-state/server-cli`](https://www.npmjs.com/package/@server-state/cli)|
+|Package version|n/a|
+|CI Build|n/a|
+|Issues|[GitHub Issues](https://github.com/server-state/cli/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)|
+
 A Command-Line Interface for developing server-state modules (CBMs and SMs).
 One can install it via `npm` (or `yarn`):
 
@@ -22,7 +31,7 @@ Installing it creates an executable in the `PATH` called `server-state`.
 
 ## General structure
 
-[server-state CLI structure Component Diagram](cli-structure.puml ':include :type=code plantuml')
+[server-state CLI structure Component Diagram](../cli-structure.puml ':include :type=code plantuml')
 
 ## Repositories
 - [CLI](https://github.com/server-state/cli)

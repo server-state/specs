@@ -76,7 +76,7 @@ A class for creating a server-state server. This handles modules and responses a
 Creates a `ServerBase` instance that can then get attached to an Express application.
 
 ##### Parameters
-- `config: SBConfig` Configuration for the server-base module, including options regarding logging
+- `config: SBConfig` Configuration for the server-base module, including options for logging
 
 
 #### `addModule(name: string, moduleFunction: (options: *) => * | Promise<*>, authorizedGroups: string[], moduleOptions?: *) => void`
@@ -85,10 +85,10 @@ Adds a server module function (as specified in [SMF](/terminology/server-module-
 Runs in $O(1)$
 
 ##### Parameters
-* `name: string` The name of the module. Must be unique (i.e., not registered before). Otherwise, the module will be skipped and an error message logged.
+* `name: string` The name of the module. Must be unique (i.e., not registered before). Otherwise, we'll skip the module and an error message logged.
 * `moduleFunction: (options: *) => * | Promise<*>` The function defining the module (SMF). Must either return a Promise for or a JSON serializable value or throw with an error message in case of failure (resulting in the error message getting logged and a `HTTP 500` response).
 * `authorizedGroups` Groups authorized to access this module
-* `moduleOptions` Options getting passed to the SMF as first argument. Can be any type, but usually will be a configuration object.
+* `moduleOptions` Options getting passed to the SMF as first argument. Can be any type, but most of the times will be a configuration object.
 
 #### `init(app: ExpressApp) => void`
 Attaches the server base to the passed Express `app`, handling routes under `/api/` there.
@@ -113,7 +113,7 @@ Logs `args`, the way `console.warning(...args)` would to the places specified by
 Logs `args`, the way `console.error(...args)` would to the places specified by the config
 
 ## `type SBConfig`
-Type of the configuration object for the server-base module
+Typedef of the configuration object for the server-base module
 
 #### `logToConsole?: boolean = true`
 If true, messages will get logged via stdout and stderr
@@ -123,14 +123,14 @@ If `true`, messages will get logged to the file specified as `logFilePath`.
 Path to the file in which messages should get logged (in case `logToFile` is `true`).
 
 #### `isAuthorized?: (req: Express.Request, authorizedGroups: string[]) => boolean`
-A callback that checks whether the current user (of the request) is authorized to access the resource
+A callback that checks whether the current user (of the request) has authorization to access the resource
 
 ##### Parameters
-- `req: ExpressRequest` The HTTP request to evaluate tokens or other forms of authentication
+- `req: ExpressRequest` The HTTP request to process tokens or other forms of authentication
 - `authorizedGroups: string[]` The groups that have the authorization to access the resource
 
 ##### Returns
-Is authorized? In other words: Is there an intersection between the groups the user belongs to and `authorizedGroups`?
+Authorized? In other words: Is there an intersection between the groups the user belongs to and `authorizedGroups`?
 
 ## Route timing
 Let $n$ be the number of registered modules.
