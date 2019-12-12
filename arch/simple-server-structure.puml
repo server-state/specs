@@ -1,8 +1,3 @@
-# The *simple-server*
-
-<!-- TODO: Detailed specifications -->
-
-```plantuml
 @startuml
 skinparam componentStyle uml2
 
@@ -29,10 +24,9 @@ node "Authentication Provider" {
     interface sqlite
 
     [oa] -- sqlite
-    [DB] <. sqlite : use
+    sqlite .> DB : use
 }
 
 HTTP -- [ss]
 ss .> oa : use
 @enduml
-```
