@@ -12,21 +12,21 @@ node Server {
 }
 
 node "External Modules" {
-    component "Server Module" as sm1
-    component "CBM" as cbm
-    [sb]-- [sm1]: > use
+    component "SM(s)" as sm1
+    component "CBM(s)" as cbm
+    [sb]--> [sm1]: > use
     [cb]->[cbm]: > use
 }
 
 node "Authentication Provider" {
     database DB
-    component "OAuth 2.0 Implementation" as oa
+    component "JWT Implementation" as auth
     interface sqlite
 
-    [oa] -- sqlite
+    [auth] -- sqlite
     sqlite .> DB : use
 }
 
 HTTP -- [ss]
-ss .> oa : use
+ss .> auth : use
 @enduml

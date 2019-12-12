@@ -1,11 +1,11 @@
 @startuml
 
 component testedCBM
-note left
+note right
     CBM in CWD
 end note
 
-package "@server-state/scli" as sersta {
+package "@server-state/cli" as sersta {
 component "cli"
 
 [testEnvironment] -|> [cli]: < requires
