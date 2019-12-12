@@ -4,7 +4,7 @@
 |Info|Value|
 |---|---|
 |Repository|https://github.com/server-state/cli|
-|NPM Package|[`@server-state/server-cli`](https://www.npmjs.com/package/@server-state/cli)|
+|NPM Package|<!--[`@server-state/server-cli`](https://www.npmjs.com/package/@server-state/cli)-->*Coming soon*|
 |Package version|n/a|
 |CI Build|n/a|
 |Issues|[GitHub Issues](https://github.com/server-state/cli/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)|
