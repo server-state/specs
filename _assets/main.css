@@ -3,3 +3,7 @@
 body {
     font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
 }
+
+.markdown-section code {
+    font-size: .8em;
+}

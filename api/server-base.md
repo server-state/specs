@@ -1,4 +1,6 @@
-# API Routes of [server-base](https://github.com/server-state/server-base)
+# server-base API Routes
+
+API routes provided by [server-base](/arch/modules/server-base.md):
 
 ## `/api/v1/`
 **Possible status codes:**
