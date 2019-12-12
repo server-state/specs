@@ -4,7 +4,7 @@
 |---|---|
 |Repository|https://github.com/server-state/server-base|
 |NPM Package|[`@server-state/server-base`](https://www.npmjs.com/package/@server-state/server-base)|
-|Package version|[![npm version](https://badge.fury.io/js/%40server-state%2Fserver-base.svg)](https://badge.fury.io/js/%40server-state%2Fserver-base)|
+|Package version|[![npm version](https://www.npmjs.com/package/@server-state/server-base)](https://badge.fury.io/js/%40server-state%2Fserver-base)|
 |CI Build|[![Build Status](https://travis-ci.com/server-state/server-base.svg?branch=master)](https://travis-ci.com/server-state/server-base)|
 |Issues|[GitHub Issues](https://github.com/server-state/server-base/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)|
 
