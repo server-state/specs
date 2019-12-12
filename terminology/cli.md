@@ -29,7 +29,7 @@ note right
     CBM in CWD
 end note
 
-package "sersta-cli" {
+package "@server-state/cli" {
 component "cli"
 component testEnvironment
 
