@@ -31,7 +31,7 @@ Installing it creates an executable in the `PATH` called `server-state`.
 
 ## General structure
 
-[server-state CLI structure Component Diagram](../cli-structure.puml ':include :type=code plantuml')
+[server-state CLI structure Component Diagram](cli-structure.puml ':include :type=code plantuml')
 
 ## Repositories
 - [CLI](https://github.com/server-state/cli)
