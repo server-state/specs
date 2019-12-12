@@ -1,0 +1,24 @@
+@startuml
+
+component testedCBM
+note left
+    CBM in CWD
+end note
+
+package "@server-state/scli" as sersta {
+component "cli"
+
+[testEnvironment] -|> [cli]: < requires
+
+component testEnvironment
+
+[cli] --> webpack: > compiles
+webpack --> HTTP: > serves
+testEnvironment ..> webpack: > goes into
+testedCBM ..> webpack: > goes into
+}
+
+testEnvironment -|>testedCBM: > dynamically reosolves
+
+testedCBM -[hidden]> webpack
+@enduml

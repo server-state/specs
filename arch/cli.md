@@ -22,28 +22,7 @@ Installing it creates an executable in the `PATH` called `server-state`.
 
 ## General structure
 
-```plantuml
-@startuml
-component testedCBM
-note right
-    CBM in CWD
-end note
-
-package "@server-state/cli" {
-component "cli"
-component testEnvironment
-
-[cli] --|> [testEnvironment]: > requires
-
-[cli] --> webpack: > compiles
-webpack --> HTTP: > serves
-[testEnvironment] ..> webpack: > goes into
-[testedCBM] ..> webpack: > goes into
-}
-
-[testEnvironment] .. [testedCBM]: > dynamically reosolves
-@enduml
-```
+[server-state CLI structure Component Diagram](cli-structure.puml ':include :type=code plantuml')
 
 ## Repositories
 - [CLI](https://github.com/server-state/cli)
