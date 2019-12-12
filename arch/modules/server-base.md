@@ -82,15 +82,18 @@ Creates a `ServerBase` instance that can then get attached to an Express applica
 #### `addModule(name: string, moduleFunction: (options: *) => * | Promise<*>, authorizedGroups: string[], moduleOptions?: *) => void`
 Adds a server module function (as specified in [SMF](/terminology/server-module-function.md)) under a given name resulting in a server module function (as specified in [SM](/terminology/server-module.md)), making it available under `/api/v1/[name]`.
 
+Runs in $O(1)$
+
 ##### Parameters
 * `name: string` The name of the module. Must be unique (i.e., not registered before). Otherwise, the module will be skipped and an error message logged.
 * `moduleFunction: (options: *) => * | Promise<*>` The function defining the module (SMF). Must either return a Promise for or a JSON serializable value or throw with an error message in case of failure (resulting in the error message getting logged and a `HTTP 500` response).
 * `authorizedGroups` Groups authorized to access this module
 * `moduleOptions` Options getting passed to the SMF as first argument. Can be any type, but usually will be a configuration object.
 
-
 #### `init(app: ExpressApp) => void`
 Attaches the server base to the passed Express `app`, handling routes under `/api/` there.
+
+Runs in $O(n)$, where $n$ is the number of registered modules.
 
 ##### Parameters
 * `app: ExpressApp` The Express app to which the routes get added.
@@ -129,6 +132,14 @@ A callback that checks whether the current user (of the request) is authorized t
 ##### Returns
 Is authorized? In other words: Is there an intersection between the groups the user belongs to and `authorizedGroups`?
 
+## Route timing
+Let $n$ be the number of registered modules.
+
+Assuming `isAuthorized(req, authorizedGroups)` runs in some time complexity $T$, returning the endpoints values will be a problem of the following complexity:
+
+- `[api-url]/all`: $O(n) * T$
+- `[api-url]/[module]`: $O(1) + T$
+- `[api-url]/[module]/permissions`: $O(1)$
 
 
 ## Usage Example
