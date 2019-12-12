@@ -7,6 +7,7 @@
 - [Branding](/branding/README.md)
 - [Terminology](/terminology/README.md)
     - [CBM](/terminology/cbm.md)
+    - [CLI](/terminology/cli.md)
     - [SM](/terminology/server-module.md)
     - [SMF](/terminology/server-module-function.md)
     - [Simple Server](/terminology/simple-server.md)
