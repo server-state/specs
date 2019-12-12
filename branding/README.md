@@ -35,7 +35,7 @@ Brand colors:
 * `#008575`: Accent
 
 ## Logo
-The Server State logo was designed by Ludwig Richter and looks like this:
+The Server State logo, designed by Ludwig Richter, looks like this:
 
 ![Server State Logo](logo/transparent/server-state_128x.png)
 
@@ -50,8 +50,8 @@ and one for light backgrounds:
 The logo may get used as demonstrated here as long as the following rules get applied:
 
 - the logo may not get modified in any way
-- the logo must, in all areas, be clearly distinct from its background. if this can not get achieved with the transparent version, use the one with a dark background on light backgrounds and vise-versa.
-- the logo must always be fully visible. Rounded corners (and other obstructions) are only acceptable when the main center shape does not thereby get obstructed.
+- the logo must, in all areas, be distinct from its background. if this can not get achieved with the transparent version, use the one with a dark background on light backgrounds and vise-versa.
+- the logo must always be fully visible. Rounded corners (and other obstructions) are acceptable when the main center shape does not thereby get obstructed.
 
 The Logo assets can get found at https://github.com/server-state/specs/tree/master/branding/logo. 
 
