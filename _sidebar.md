@@ -6,6 +6,7 @@
     - [Data Formats](/arch/data-formats.md)
     - [Modules](/arch/modules/README.md)
         - [server-base](/arch/modules/server-base.md)
+        - [CLI](/arch/modules/cli.md)
     - [Simple Server](/arch/simple-server.md)
 - [Branding](/branding/README.md)
 - [Terminology](/terminology/README.md)
