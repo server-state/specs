@@ -4,8 +4,8 @@
 |---|---|
 |Repository|https://github.com/server-state/server-base|
 |NPM Package|[`@server-state/server-base`](https://www.npmjs.com/package/@server-state/server-base)|
-|Package version|![Package Version Badge](https://camo.githubusercontent.com/a37713882a15380828c3498b8ad97653b8142e15/68747470733a2f2f62616467652e667572792e696f2f6a732f2534307365727665722d73746174652532467365727665722d626173652e737667)|
-|CI Build|![CI Build Badge](https://camo.githubusercontent.com/873940dadf68b7a19f23be765015d20cc7071c15/68747470733a2f2f7472617669732d63692e636f6d2f7365727665722d73746174652f7365727665722d626173652e7376673f6272616e63683d6d6173746572)|
+|Package version|[![npm version](https://badge.fury.io/js/%40server-state%2Fserver-base.svg)](https://badge.fury.io/js/%40server-state%2Fserver-base)|
+|CI Build|[![Build Status](https://travis-ci.com/server-state/server-base.svg?branch=master)](https://travis-ci.com/server-state/server-base)|
 |Issues|[GitHub Issues](https://github.com/server-state/server-base/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)|
 
 Server-side (NodeJS based) implementation of the server-base architecture (no modules included).
