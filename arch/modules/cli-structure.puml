@@ -8,7 +8,7 @@ end note
 package "@server-state/cli" as sersta {
 component "cli"
 
-[testEnvironment] -|> [cli]: < requires
+[testEnvironment] <|- [cli]: < requires
 
 component testEnvironment
 
