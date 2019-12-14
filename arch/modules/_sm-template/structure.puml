@@ -1,0 +1,39 @@
+@startuml
+
+'Modify to fit your module'
+
+component "Server Module (SM)" as sm {
+    class "SMF (Server Module Function)" as SMF <<function>> {
+        Returns the JSON-serializable value that
+        the API should send the client (as JSON)
+        -- Params: --
+        + config: string[]
+        -- Returns: --
+        Some JSON-serializable data
+    }
+}
+
+object "config: *" as config {
+    Some sort of configuration object
+    -- Example: --
+    ['ls', 'whoami']
+}
+
+note bottom
+A config passed to the SMF.
+Gets configured per registered
+endpoint in ServerBase::addModule
+end note
+
+config -> sm: passed into
+
+sm <. SMF: export
+
+component "Dependencies" as se {
+}
+
+se <|-- sm
+
+hide <<function>> methods
+hide <<function>> circle
+@enduml
