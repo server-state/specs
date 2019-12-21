@@ -1,0 +1,41 @@
+@startuml
+
+'Modify to fit your module'
+
+component "@server-state/raw-module" as sm {
+    class "SMF (Server Module Function)" as SMF <<function>> {
+        Returns results of running the passed
+        commands in the terminal
+        -- Params: --
+        + config: string[]
+        -- Returns: --
+        Key-value-pair-object with
+        { stdout: string, stderr:string, code: number }
+        per command (command as key) as value
+    }
+}
+
+object "config: string[]" as config {
+    Array of commands
+    -- Example: --
+    ['ls', 'whoami']
+}
+
+note bottom
+Commands that get
+executed in
+the shell
+end note
+
+config -> sm: passed into
+
+sm <. SMF: export
+
+component "shell-exec" as se {
+}
+
+se <|-- sm
+
+hide <<function>> methods
+hide <<function>> circle
+@enduml
