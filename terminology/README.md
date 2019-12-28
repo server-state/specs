@@ -6,4 +6,4 @@ To make communication for the project easier and more efficient, we use some cus
 - [CBM / Client-Base-Module](/terminology/cbm.md)
 - [SM / Server-Module](/terminology/server-module.md)
 - [SMF / Server-Module-Function](/terminology/server-module-function.md)
-- [Simple Server](/terminology/simple-server.md)
+- [Simple Server](/arch/simple-server.md)
