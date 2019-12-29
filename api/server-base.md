@@ -5,8 +5,7 @@ API routes provided by [server-base](/arch/modules/server-base.md):
 ## `/api/v1/`
 **Possible status codes:**
 * `403` for unauthorized users
-* `404` when the server isn't running
-* `500` when the server has a wrongly configured module
+* `404` for authorized users
 
 Base route. Will result in 404 or, if the API requires
 authorization/authentication to use, 403 for unauthorized users.
@@ -17,7 +16,6 @@ authorization/authentication to use, 403 for unauthorized users.
 **Possible status codes:**
 * `200` when everything works as expected
 * `403` for unauthorized users
-* `404` when the server isn't running
 * `500` when the server has a wrongly configured module
 
 Returns a JSON object with properties of all modules accessible by the authenticated user as a key-value pair with
@@ -38,8 +36,8 @@ the key being the name of the [SM](/terminology/server-module.md).
 **Possible status codes:**
 * `200` when everything works as expected
 * `403` for unauthorized users
-* `404` when the server isn't running
-* `500` when the server has a wrongly configured module
+* `404` when the module isn't registered
+* `500` when the module has falsy configuration or an error occurs during the SMF's execution
 
 Returns evaluated value of the module specified by the `[module-name]` as JSON.
 
@@ -62,9 +60,8 @@ Returns evaluated value of the module specified by the `[module-name]` as JSON.
 
 **Possible status codes:**
 * `200` when everything works as expected
-* `403` for unauthenticated users
-* `404` when the server isn't running
-* `500` when the server has a wrongly configured module
+* `403` for unauthorized users
+* `404` when the module isn't registered
 
 Returns a JSON `string[]` containing the names of groups who have access to the endpoint `[module-name]`.
 
