@@ -4,11 +4,9 @@ API routes provided by [server-base](/arch/modules/server-base.md):
 
 ## `/api/v1/`
 **Possible status codes:**
-* `403` for unauthorized users
-* `404` for authorized users
+* `404` when the server is running
 
-Base route. Will result in 404 or, if the API requires
-authorization/authentication to use, 403 for unauthorized users.
+Base route. Will result in 404 or, if the API is setup.
 
 ## `/api/v1/all`
 **Response type:** JSON
