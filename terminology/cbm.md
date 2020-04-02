@@ -1,46 +1,71 @@
 # Client Base Module (*CBM*)
-A client-base module is a visualization that can get used in the [client-base](https://github.com/server-state/client-base).
+A client-base module provides a visualization of data from a Server Module that can get used in the  [client-base](https://github.com/server-state/client-base).
 
-It gets passed the data returned form the API and visualized the data.
+CBMs are, in the simplest form, the combination of some metadata and a React component that follows a standard that makes it possible to integrate them into client software implementing the required interfaces.
 
-We release CBMs as npm modules with a naming schema of `[module-name]-cbm` for modules specialized for a 
-specific *SM* or `[data-type-name]-[vis-name]-cbm` for general CBMs for specific [standardized data formats](/arch/data-formats.md).
+## Development process
+CBMs can get developed using either the tooling provided by Server State or custom solutions implementing the required standards,  as established by the Server State specifications.
 
-### Examples of names
-- `linux-raid-module-cbm`: A CBM that can get used for the `linux-raid-module` (which doesn't use a standard data format)
-- `xydata-line-chart-cbm`: A line chart visualization for XYData
-- `xydata-table-cbm`: A table visualization for XYData
+CBMs get packaged into JS-compatible  .cbm files.  These can either get distributed and installed manually or via the official or an unofficial CBM Registry.
 
-### Technical specifications
-CBMs are "importable" modules (may they get installed via npm, locally or otherwise), that consist of a Component and some Meta info.
+## Dos and Don'ts
+A CBM,  when viewed in an MVC-like model,  is a View-only component.  They are only responsible for providing a visual representation of the data passed to them, **not to**
+-   actively manipulate that data
+-   take active action in one way or another
+-   escape the encapsulated environment in and for which they get used
 
-The structure of an CBM should allow, if the CBM is in `my-cbm`, to be importable as `'my-cbm'`, giving an object (`{component: ReactComponent, info: object}`), `'my-cbm/component'`, giving `'my-cbm'.component` and `'my-cbm/info'`, giving `'my-cbm'.info`.
+These restrictions **do not mean** that it's impossible to implement powerful features of CBMs that,  in a non-intrusive way,  implement visualization of the data.  These features may include settings for the visualization,  showing modals with more data _upon user interaction,  and more_.
 
-`info` has to follow an interface that looks as follows:
+It is also possible for a CBM to self-refresh its data.  Refreshing,  however,  gets achieved by calling an outside method passed to the component and not from within the component itself.  This outside call effectively destroys the component instance and re-renders it using the freshly fetched data.  Moving this to the outside means that except for rare exceptions, **CBMs do not need to perform any external communication like,  e.g.,  HTTP/-S requests**.
 
-```
-{
-  name: string | IntlString,
-  description?: string | IntlString,
-  about?: string | IntlString,
-  version?: string,
-  logoUrl?: string, // Ideally, a base64 encoded data URI
-}
-```
+**A CBM should** provide a visualization of the data passed to it that
+-   provides a good User Experience for inspecting the data
+-   works as one component of many in a dashboard
+-   works across the relevant sizes  (width:  240  -  1920px)  and devices  (Desktop,  Mobile,  etc.)
+-   adjusts,  in a reasonably good way,  to the settings provided to it,  like the current theme
+-   if possible,  uses the Material Design Components  (and library)  used by the client-base to fit the surrounding interface nicely
+-   detects incompatible data types passed to it and _throws_ useful error messages  (that,  then,  get handled outside the CBM)
+-   renders performantly  (as many CBMs might get rendered simultaneously)
+-   is free of any external resource dependencies,  i.e.,  all a CBM needs to render is the data provided to it in a suitable JSONLike format.
+-   is localized as much as possible,  but at least provides English information
 
-The component is the CBM shown to the user and must work for widths from 320px to 1080px. It gets passed the following `props`:
+## Technical requirements
+### Distribution and the `.cbm` file format
+CBMs get distributed via a CBM registry. A central, most-used official registry, provided by the SerSta team, exists, but it is also possible to host one's own registry, e.g., for internal company purposes.
 
-*   `data: JSONSerializable`: The data returned by the API endpoint
-*   `onRegisterAction: (name, action) => void` a function that lets the CBM register an action for the "Three-Dots/More Actions" menu
-*   `onRefresh: () => Promise<void>` a function to reload the API response for this CBM from inside the CBM (e.g., for modules requiring frequent updates etc.)
+To upload a CBM into the registry, a `.cbm` file has to get built using the `@server-state/cli`, available in npm.
 
-Components get registered in `/src/config/component-registry.js` as the object importable from `my-cbm`, i.e., the object containing `component` and `info`. Because of this, it's possible to use something like:
+This file format is, at a basic level, a JSON file containing an `object` with the following properties:
+- `id: string` A unique plugin id, provided by the registry.
+- `name: string` The CBM's name
+- `version: string` An npm-compatible version number
+- `description: string` A description of the CBM
+- `support_url: string` A url where users can get support, including the capability of contacting the CBM's author
+- `website: string | undefined` The CBM's website, if applicable
+- `repo_url: string | undefined` The CBM's repository, if applicable
+- `code: string` The CBM's code in JS, see the specification below
 
-```
-import MyCbm from 'my-cbm';
+### Specification of the `.cbm`'s `code: string` property
+The `code` property is a string containing valid JavaScript code that exports (in CommonJS2, i.e., using `module.exports = {}`) an object containing the following properties:
 
-const components = {
-  MyCbm.info.name: MyCbm,
-  [...]
-};
-```
+- `component: React.Component` A react component that actually defines the CBM, as defined below in *The React Component*
+- `isCompatible: (data: JSONSerializable) => boolean | undefined` A function that checks whether the `data` is in a format that can get visualized by this CBM. For compatibility reasons, providing this function is optional, not providing it, however, leads to a flag stating *Compatibility unknown* in the CBM selection screen in the *client-base*.
+
+While most dependencies have to get compiled into the code itself (this happens automatically when using the SerSta CLI), some modules get provided when parsing the code and therefore can and should get used for developing CBMs:
+
+- React-specific modules: `react`, `react-dom` and `prop-types`
+- Design system modules: `react-md` and `material-icons`
+ 
+### The React Component
+To fit the requirements we laid out above,  the following arguments  (in the form of props)  have to get passed to a CBM's component and therefore shall get considered to be the standard for CBMs:
+-   `data: JSONLike`:  The data received from a Server State Instance.
+-   `registerMenuItem: (label: string, cb: () => void) => void`:  Registers a menu item that,  according to this standard,  must get made accessible to the end-user within the context of the CBM usage.  When the menu item gets used,  the callback passed as cb shall get called.  Duplicate calls with identical labels shall override previously added menu items.
+-   `refresh: () => void`:  A function that,  when called,  leads the client software to refresh the data for this specific CBM usage,  leading to the CBM getting replaced by a loading screen and then re-rendered,  effectively destroying the CBM instance.  It should,  therefore,  only get called when it is safe to destroy the CBM component.
+-   `theme`:  The library's theme object.  Shall get respected by the CBM to the greatest extent possible without lowering usability
+-   `storage: { get: (key: string, val: JSONLike) => void, set: (key) => JSONLike }`:  A permanent,  in-browser storage for this specific CBM usage.  It can get used to store per-usage preferences or similar values.
+-   `lang: string`:  A two-letter language code for the current UI language of the client software,  following the _ISO 639-1_ standard.  If the passed language is not supported,  English shall get used.
+
+## Compatibility
+Compatibility for the standards laid out in this document  (and thus,  of version 1.0 of the Server State ecosystem)  shall get kept as long as possible within the justification of reasonability.  Providing compatibility does, explicitly, not forbid additions,  as long as we keep backward compatibility.
+
+We,  the Server State team,  recognize the importance of external developers for a thriving ecosystem and,  therefore,  the success of the project itself and therefore vow to recognize and follow the above statement with the utmost priority.
