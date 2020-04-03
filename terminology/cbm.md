@@ -9,7 +9,7 @@ CBMs can get developed using either the tooling provided by Server State or cust
 CBMs get packaged into JS-compatible .cbm files. These can either get distributed and installed manually or via the official or an unofficial CBM Registry.
 
 ## Dos and Don'ts
-A CBM, when viewed in an MVC-like model, is nothing bu t a view component. They are responsible for providing a visual representation of the data passed to them, **not to**
+A CBM, when viewed in an MVC-like model, is nothing but a view component. They are responsible for providing a visual representation of the data passed to them, **not to**
 - actively manipulate that data
 - take active action in one way or another
 - escape the encapsulated environment in and for which they get used
