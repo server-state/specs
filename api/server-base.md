@@ -87,14 +87,14 @@ Returns a JSON `string[]` containing the names of groups who have access to the 
 Returns an array of sample data for the SMF of this module.
 
 > [!WARNING]
-> This endpoint has to be accessible for unautenticated, too. Therefore, it may
+> This endpoint has to be accessible for unautenticated, too. Thus, it may
 > not expose any vulnerable information about the server.
 
 **Example 1**
 `/api/v1/module2/sample`
 
 ```json
-["some string","some other string","this SMF only returns strings"]
+["some string","some other string","this SMF returns strings"]
 ```
 
 **Example 2**
@@ -103,7 +103,7 @@ Returns an array of sample data for the SMF of this module.
 ```json
 [
   ["this SMF", "contains arrays"], 
-  ["that only", "contain strings", "but can be empty"], 
+  ["that", "contain strings", "but can be empty"], 
   []
 ]
 ```
