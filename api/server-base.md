@@ -76,3 +76,31 @@ Returns a JSON `string[]` containing the names of groups who have access to the 
 ```json
 ["admin","developer","devops","user","guest"]
 ```
+
+## `/api/v1/[module-name]/sample`
+**Response type:** JSON
+
+**Possible status codes:**
+* `200` when everything works as expected
+* `404` when the module isn't registered
+
+Returns an array of sample data for the SMF of this module.
+
+> [!WARNING]
+> This endpoint has to be accessible for unautenticated, too. Therefore, it may
+> not expose any vulnerable information about the server.
+
+**Example 1**
+`/api/v1/module2/sample`
+
+```json
+["some string","some other string","this SMF only returns strings"]
+```
+
+**Example 2**
+`/api/v1/module3/sample`
+
+```json
+[["this SMF", "contains arrays"], ["that only", "contain strings", "but can be
+empty], []]
+```
