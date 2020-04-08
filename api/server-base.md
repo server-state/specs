@@ -101,6 +101,9 @@ Returns an array of sample data for the SMF of this module.
 `/api/v1/module3/sample`
 
 ```json
-[["this SMF", "contains arrays"], ["that only", "contain strings", "but can be
-empty], []]
+[
+  ["this SMF", "contains arrays"], 
+  ["that only", "contain strings", "but can be empty"], 
+  []
+]
 ```
