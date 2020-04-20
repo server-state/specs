@@ -140,6 +140,7 @@ Assuming `isAuthorized(req, authorizedGroups)` runs in some time complexity $T$,
 - `[api-url]/all`: $O(n) * T$
 - `[api-url]/[module]`: $O(1) + T$
 - `[api-url]/[module]/permissions`: $O(1)$
+- `[api-url]/[module]/sample`: $O(1)$
 
 
 ## Usage Example

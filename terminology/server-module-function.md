@@ -1,14 +1,10 @@
 # Server Module Function
-A server module function (short: *SMF*) is a function defining the output of a
-given module for a given set of options.
+A server module function (short: *SMF*) is a function  with some static
+properties defining the output of a given module for a given set of options.
 
-It can get used for [server modules](/terminology/server-module.md) and must follow the
-following signature:
+It can get used for [server modules](/terminology/server-module.md).
 
-```
-(options?: *) => Promise<object | array | string | number | boolean> | object | array |
-string | number | boolean
-```
+(for more technical details, please refer to https://server-state.github.io/types/modules/serverstate.html#smf)
 
 A SMF should be a *`readonly`* operation on the system (not changing any files), and
 
